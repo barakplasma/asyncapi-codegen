@@ -126,7 +126,10 @@ func (c *Controller) Publish(_ context.Context, queueName string, bm extensions.
 }
 
 // Subscribe to messages from the broker.
-func (c *Controller) Subscribe(ctx context.Context, queueName string) (extensions.BrokerChannelSubscription, error) {
+//
+//nolint:funlen
+func (c *Controller) Subscribe(ctx context.Context, queueName string) (
+	extensions.BrokerChannelSubscription, error) {
 	// Create a new subscription
 	sub := extensions.NewBrokerChannelSubscription(
 		make(chan extensions.AcknowledgeableBrokerMessage, brokers.BrokerMessagesQueueSize),
